@@ -1,6 +1,6 @@
 -- Dit is de database die ik heb gebruikt. Run dit script om de app te laten werken --
 
-DROP DATABASE jamin_a;
+DROP DATABASE IF EXISTS jamin_a;
 CREATE DATABASE jamin_a;
 
 USE jamin_a;
@@ -62,7 +62,8 @@ INSERT INTO magazijn (ProductId, Barcode, ProductNaam, VerpakkingsEenheid, Aanta
 ('PROD002', '8712345678902', 'Dropveters', 'Pallet', 45, true, 'Bulk verpakking'),
 ('PROD003', '8712345678903', 'Cola Flesjes', 'Stuk', 750, true, 'Losse items'),
 ('PROD004', '8712345678904', 'Chocolade Repen', 'Doos', 200, false, 'Uitlopend product'),
-('PROD005', '8712345678905', 'Winegums', 'Container', 25, true, 'Grote volumes');
+('PROD005', '8712345678905', 'Winegums', 'Container', 25, true, 'Grote volumes'),
+('PROD006', '8712345678906', 'Nieuw Product', 'Stuk', 0, true, 'Product zonder leveringen'); -- Nieuw product zonder leveringen
 
 INSERT INTO leveranciers (Naam, Contactpersoon, Leveranciernummer, MobielNummer) VALUES
 ('Dutch Supplies BV', 'Jan de Vries', 'LEV001', '06-12345678'),
@@ -76,9 +77,10 @@ INSERT INTO product_leverancier (ProductId, LeverancierId) VALUES
 (1, 2),
 (2, 2),
 (3, 3),
-(3, 4),
+(4, 4),
 (4, 5),
-(5, 1);
+(5, 1),
+(6, 1); -- Verbind het nieuwe product aan een leverancier zonder leveringen
 
 INSERT INTO product_leveringen (ProductId, AantalGeleverd, DatumLevering, VerwachteLeveringsDatum) VALUES
 (1, 50, '2024-01-15', '2024-01-14'),
@@ -91,7 +93,7 @@ INSERT INTO product_leveringen (ProductId, AantalGeleverd, DatumLevering, Verwac
 (3, 150, '2024-04-15', '2024-04-15');
 
 INSERT INTO allergenen (Naam, Beschrijving, IsActief) VALUES
-('Pinda', 'Pinda''s en pindaproducten', true),
+('Pinda', 'Pinda\'s en pindaproducten', true),
 ('Noten', 'Verschillende soorten noten', true),
 ('Melk', 'Melk en melkproducten (inclusief lactose)', true),
 ('Soja', 'Soja en sojaproducten', true),

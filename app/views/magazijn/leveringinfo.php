@@ -1,14 +1,14 @@
 <?php require_once APPROOT . '/views/includes/header.php'; ?>
 
 <div class="container">
-    <?php if (isset($data['redirect'])): ?>
+    <?php if (empty($data['leveringen'])): ?>
         <div class="alert alert-warning text-center">
-            <?= $data['message']; ?>
+            Er zijn geen leveringen beschikbaar.
         </div>
         <script>
             setTimeout(function() {
-                window.location.href = '<?= $data['redirectUrl']; ?>';
-            }, <?= $data['redirectTime']; ?>);
+                window.location.href = '<?= URLROOT; ?>/magazijn/index';
+            }, 3000); // Redirect after 3 seconds
         </script>
     <?php else: ?>
         <div class="row mt-3">
